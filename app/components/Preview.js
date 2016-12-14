@@ -1,7 +1,6 @@
-var React = require('react');
-var ReactRouter = require('react-router');
-var HeaderFooter = require('./HeaderFooter');
-var Link = ReactRouter.Link
+import React from "react";
+
+import HeaderFooter from './HeaderFooter';
 
 function Preview () {
   return (

@@ -1,39 +1,17 @@
-var React = require('react');
-var ReactRouter = require('react-router');
-var styles = require('../styles');
-var Link = ReactRouter.Link
+import React from 'react';
+import Frame from 'react-frame-component';
 
-function GuessUS () {
-  return (
-    <iframe style={styles.iframe}>
-      <html xmlns="http://www.w3.org/1999/xhtml">
-        <head>
-        </head>
-        <body>
-          <table>
-            <tbody>
-              <tr>
-                <td>HELLO</td>
-                <td>WORLD</td>
-              </tr>
-            </tbody>
-          </table>
-        </body>
-      </html>
-    </iframe>
-  )
+import GuessUS from './GuessUS';
+import styles from '../styles';
+
+export default class HeaderFooter extends React.Component {
+  constructor() {
+    super();
+  }
+  render() {
+    return (
+      <Frame width="600px"><GuessUS name="World"/></Frame>
+    )
+  }
 }
 
-
-
-
-
-
-function HeaderFooter () {
-
-  return (
-    <div><GuessUS /></div>
-  )
-}
-
-module.exports = HeaderFooter;
