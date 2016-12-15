@@ -4,9 +4,9 @@ var Router = ReactRouter.Router;
 var Route = ReactRouter.Route;
 var hashHistory = ReactRouter.hashHistory;
 var IndexRoute = ReactRouter.IndexRoute;
-var Main = require('../components/Main');
-var Home = require("../components/Home");
-var Compose = require('../components/Compose');
+var Main = require('../components/Main').default;
+var Home = require("../components/Home").default;
+var Compose = require('../components/Compose').default;
 
 
 var routes = (

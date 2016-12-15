@@ -1,19 +1,31 @@
-var React = require('react');
-var ReactRouter = require('react-router');
-var Elements = require ('./Elements');
-var Preview = require ('./Preview');
-var Link = ReactRouter.Link
+import React from 'react';
 
-function Compose () {
-  return (
-    <div className="text-center">
-      <h2 className="col-sm-8 col-sm-offset-2">Compose</h2>
-      <div className="row">
-        <Elements />
-        <Preview />
+import Elements from './Elements';
+import Preview from './Preview';
+
+
+export default class Compose extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      title: 'hola',
+    };
+  }
+
+  changeTitle(title) {
+    this.setState({title});
+  }
+
+  render() {
+    return (
+      <div className="text-center">
+        <h2 className="col-sm-8 col-sm-offset-2">Compose</h2>
+        <div className="row">
+          <Elements changeTitle={this.changeTitle.bind(this)} title={this.state.title} />
+          <Preview title={this.state.title} changeTitle={this.changeTitle.bind(this)} />
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
-module.exports = Compose;

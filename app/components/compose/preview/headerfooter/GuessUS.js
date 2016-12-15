@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Body from './Body';
 import guessStyle from '../styles/Guess';
 
 export default class GuessUS extends React.Component {
@@ -72,6 +73,13 @@ export default class GuessUS extends React.Component {
                       </tr>
                       <tr>
                         <td valing="top" style={guessStyle.body}>
+
+
+
+                          <Body title={this.props.title} />
+
+
+
                         </td>
                       </tr>
                       <tr>
