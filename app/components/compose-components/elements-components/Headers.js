@@ -14,6 +14,11 @@ export default class Headers extends React.Component {
     header.color = color;
     this.props.createHeader(header);
   }
+  handleSize(e) {
+    const size = e.target.value;
+    header.size = size;
+    this.props.createHeader(header);
+  }
   render() {
     return (
       <div>
@@ -34,6 +39,15 @@ export default class Headers extends React.Component {
               type={'color'}
               value={this.props.header.color}
               onChange={this.handleColor.bind(this)} />
+          </div>
+          <div>
+            <label for={'size'}>size</label>
+            <input
+              id={'size'}
+              placeholder={'10'}
+              type={'number'}
+              value={this.props.header.size}
+              onChange={this.handleSize.bind(this)} />
           </div>
         </form>
       </div>
