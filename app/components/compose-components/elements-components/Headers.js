@@ -1,19 +1,41 @@
 import React from 'react';
 
+var header = {}
+
 export default class Headers extends React.Component {
-  handleChange(e) {
+
+  handleCopy(e) {
     const copy = e.target.value;
-    this.props.createHeader(copy);
+    header.copy = copy;
+    this.props.createHeader(header);
+  }
+  handleColor(e) {
+    const color = e.target.value;
+    header.color = color;
+    this.props.createHeader(header);
   }
   render() {
     return (
       <div>
         <p>Headers</p><br />
-        <input
-          id={'copy'}
-          placeholder={'copy'}
-          value={this.props.header.copy}
-          onChange={this.handleChange.bind(this)} />
+        <form className="text-left">
+          <div>
+            <label for={'copy'}>copy</label>
+            <input
+              id={'copy'}
+              placeholder={'copy'}
+              value={this.props.header.copy}
+              onChange={this.handleCopy.bind(this)} />
+          </div>
+          <div>
+            <label for={'color'}>color</label>
+            <input
+              id={'color'}
+              type={'color'}
+              value={this.props.header.color}
+              onChange={this.handleColor.bind(this)} />
+          </div>
+        </form>
       </div>
     )
   }

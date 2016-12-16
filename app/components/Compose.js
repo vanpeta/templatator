@@ -16,7 +16,10 @@ export default class Compose extends React.Component {
 
   createHeader(header) {
     this.setState({
-      header: {copy: header}
+      header: {
+        copy: header.copy,
+        color: header.color
+      }
     });
   }
 
