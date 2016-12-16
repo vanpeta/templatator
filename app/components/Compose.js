@@ -1,19 +1,23 @@
 import React from 'react';
 
-import Elements from './Elements';
-import Preview from './Preview';
+import Elements from './compose-components/Elements';
+import Preview from './compose-components/Preview';
 
 
 export default class Compose extends React.Component {
   constructor() {
     super();
     this.state = {
-      title: 'hola',
+      header: {
+        copy: 'newTest'
+      }
     };
   }
 
-  changeTitle(title) {
-    this.setState({title});
+  createHeader(header) {
+    this.setState({
+      header: {copy: header}
+    });
   }
 
   render() {
@@ -21,8 +25,12 @@ export default class Compose extends React.Component {
       <div className="text-center">
         <h2 className="col-sm-8 col-sm-offset-2">Compose</h2>
         <div className="row">
-          <Elements changeTitle={this.changeTitle.bind(this)} title={this.state.title} />
-          <Preview title={this.state.title} changeTitle={this.changeTitle.bind(this)} />
+          <Elements
+            createHeader={this.createHeader.bind(this)}
+            header={this.state.header} />
+          <Preview
+            header={this.state.header}
+          />
         </div>
       </div>
     )

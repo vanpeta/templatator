@@ -1,6 +1,6 @@
 import React from "react";
 
-import HeaderFooter from './HeaderFooter';
+import HeaderFooter from './preview-components/HeaderFooter';
 
 export default class Preview extends React.Component {
   render() {
@@ -8,7 +8,7 @@ export default class Preview extends React.Component {
       <div className="col-sm-4">
         <p>Preview</p>
         <div>
-          <HeaderFooter title={this.props.title} />
+          <HeaderFooter header={this.props.header} />
         </div>
       </div>
     )

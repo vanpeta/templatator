@@ -8,7 +8,7 @@ export default class Body extends React.Component {
       <tbody>
         <tr>
           <td valing="top" style={{textAlign: 'center', fontWeight: 'normal', fontFamily: 'CenturyGothic, Futura, Verdana, sans-serif', letterSpacing: '.25em', fontSize: '70px', color: '#000000', lineHeight: '.8em', paddingLeft: '5%'}}>
-            {this.props.title}
+            {this.props.header.copy}
           </td>
         </tr>
         </tbody>

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Body from './Body';
-import guessStyle from '../styles/Guess';
+import Body from '../../../Body';
+import guessStyle from '../../../../styles/Guess';
 
 export default class GuessUS extends React.Component {
   render() {
@@ -76,7 +76,7 @@ export default class GuessUS extends React.Component {
 
 
 
-                          <Body title={this.props.title} />
+                          <Body header={this.props.header} />
 
 
 

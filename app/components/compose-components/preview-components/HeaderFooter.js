@@ -1,8 +1,8 @@
 import React from 'react';
 import Frame from 'react-frame-component';
 
-import GuessUS from './GuessUS';
-import styles from '../styles';
+import GuessUS from './headerfooter-components/GuessUS';
+import styles from '../../../styles';
 
 export default class HeaderFooter extends React.Component {
 
@@ -19,7 +19,7 @@ export default class HeaderFooter extends React.Component {
         <style>{'a img {border: 0 none;}a, a:visited, a:hover, a:active { color: inherit; } .gmailfix { display:none; display:none!important; } @media only screen and (max-width: 580px) { *[class="padd_10"] { padding-left:10px; padding-right:10px; } } @media only screen and (min-device-width: 1200px) { @media only screen and (max-width: 580px) { .set_width_100 { width: 100%!important; } } }'}
         </style>
       ]}>
-          <GuessUS title={this.props.title}/>
+          <GuessUS header={this.props.header}/>
       </Frame>
     )
   }
