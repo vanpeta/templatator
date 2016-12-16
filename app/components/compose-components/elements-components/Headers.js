@@ -19,6 +19,16 @@ export default class Headers extends React.Component {
     header.size = size;
     this.props.createHeader(header);
   }
+  handleFontWeight(e) {
+    const fontWeight = e.target.value;
+    header.fontWeight = fontWeight;
+    this.props.createHeader(header);
+  }
+  handleAlignment(e) {
+    const alignment = e.target.value;
+    header.alignment = alignment;
+    this.props.createHeader(header);
+  }
   render() {
     return (
       <div>
@@ -48,6 +58,25 @@ export default class Headers extends React.Component {
               type={'number'}
               value={this.props.header.size}
               onChange={this.handleSize.bind(this)} />
+          </div>
+          <div>
+            <label for={'fontWeight'}>font weight</label>
+            <select
+              id={'fontWeight'}
+              onChange={this.handleFontWeight.bind(this)}>
+                <option value="normal" defaultValue>Normal</option>
+                <option value="bold">Bold</option>
+            </select>
+          </div>
+          <div>
+            <label for={'alignment'}>Alignment</label>
+            <select
+              id={'alignment'}
+              onChange={this.handleAlignment.bind(this)}>
+                <option value="center" defaultValue>Center</option>
+                <option value="left">Left</option>
+                <option value="right">Right</option>
+            </select>
           </div>
         </form>
       </div>

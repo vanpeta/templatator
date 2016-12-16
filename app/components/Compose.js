@@ -19,7 +19,9 @@ export default class Compose extends React.Component {
       header: {
         copy: header.copy,
         color: header.color,
-        size: header.size
+        size: header.size,
+        fontWeight: header.fontWeight,
+        alignment: header.alignment
       }
     });
   }
@@ -33,7 +35,7 @@ export default class Compose extends React.Component {
             createHeader={this.createHeader.bind(this)}
             header={this.state.header} />
           <Preview
-            header={this.state.header}
+            style={{height: "100%"}} header={this.state.header}
           />
         </div>
       </div>
