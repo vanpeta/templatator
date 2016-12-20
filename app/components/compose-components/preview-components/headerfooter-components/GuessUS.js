@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Body from '../../../Body';
+import Body from '../Body';
 import guessStyle from '../../../../styles/Guess';
 
 export default class GuessUS extends React.Component {

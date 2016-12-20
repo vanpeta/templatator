@@ -1,71 +1,66 @@
 import React from 'react';
 
-import * as HeaderActions from "../../../actions/HeaderActions"
-var header = {}
+var block = {}
 
-export default class Headers extends React.Component {
-
-  createHeader() {
-    HeaderActions.createHeader(header)
-  }
+export default class Blocks extends React.Component {
 
   handleCopy(e) {
     const copy = e.target.value;
-    header.copy = copy;
-    this.props.createHeader(header);
+    block.copy = copy;
+    this.props.createBlock(block);
   }
   handleColor(e) {
     const color = e.target.value;
-    header.color = color;
-    this.props.createHeader(header);
+    block.color = color;
+    this.props.createBlock(block);
   }
   handleSize(e) {
     const size = e.target.value;
-    header.size = size;
-    this.props.createHeader(header);
+    block.size = size;
+    this.props.createBlock(block);
   }
   handleFontWeight(e) {
     const fontWeight = e.target.value;
-    header.fontWeight = fontWeight;
-    this.props.createHeader(header);
+    block.fontWeight = fontWeight;
+    this.props.createBlock(block);
   }
   handleAlignment(e) {
     const alignment = e.target.value;
-    header.alignment = alignment;
-    this.props.createHeader(header);
+    block.alignment = alignment;
+    this.props.createBlock(block);
   }
   render() {
     return (
       <div>
-        <p>Headers</p><br />
+        <p id="blocks" onClick={this.props.elementSelected}>Blocks of Text</p><br />
         <form className="text-left">
           <div>
-            <label for={'copy'}>copy</label>
+            <label for={'copy'}>Copy</label>
             <input
               id={'copy'}
               placeholder={'copy'}
-
+              value={this.props.block.copy}
               onChange={this.handleCopy.bind(this)} />
           </div>
           <div>
-            <label for={'color'}>color</label>
+            <label for={'color'}>Color</label>
             <input
               id={'color'}
               type={'color'}
-              value={this.props.header.color}
+              value={this.props.block.color}
               onChange={this.handleColor.bind(this)} />
           </div>
           <div>
-            <label for={'size'}>size</label>
+            <label for={'size'}>Size</label>
             <input
               id={'size'}
-              placeholder={'10'}
+              placeholder={'40'}
               type={'number'}
-              value={this.props.header.size}
+              value={this.props.block.size}
               onChange={this.handleSize.bind(this)} />
           </div>
           <div>
-            <label for={'fontWeight'}>font weight</label>
+            <label for={'fontWeight'}>Font weight</label>
             <select
               id={'fontWeight'}
               onChange={this.handleFontWeight.bind(this)}>
@@ -78,14 +73,13 @@ export default class Headers extends React.Component {
             <select
               id={'alignment'}
               onChange={this.handleAlignment.bind(this)}>
-                <option value="center" defaultValue>Center</option>
-                <option value="left">Left</option>
+                <option value="left" defaultValue>Left</option>
+                <option value="center">Center</option>
                 <option value="right">Right</option>
             </select>
           </div>
-          <button onClick={this.createHeader.bind(this)}>Create</button>
         </form>
       </div>
-    )
+    );
   }
 };

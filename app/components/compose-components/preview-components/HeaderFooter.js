@@ -1,5 +1,4 @@
 import React from 'react';
-import Frame from 'react-frame-component';
 
 import GuessUS from './headerfooter-components/GuessUS';
 import styles from '../../../styles';
