@@ -1,14 +1,15 @@
 import React from 'react';
 
-import * as HeaderActions from "../../../actions/HeaderActions"
+import * as HeaderActions from "../../../actions/Actions"
 var header = {}
 
 export default class Headers extends React.Component {
-
   createHeader() {
     HeaderActions.createHeader(header)
   }
-
+  deleteHeader (id) {
+    HeaderActions.deleteHeader(id)
+  }
   handleCopy(e) {
     const copy = e.target.value;
     header.copy = copy;
@@ -44,7 +45,6 @@ export default class Headers extends React.Component {
             <input
               id={'copy'}
               placeholder={'copy'}
-
               onChange={this.handleCopy.bind(this)} />
           </div>
           <div>
@@ -83,7 +83,7 @@ export default class Headers extends React.Component {
                 <option value="right">Right</option>
             </select>
           </div>
-          <button onClick={this.createHeader.bind(this)}>Create</button>
+          <button onClick={this.createHeader.bind(this)}>Save</button>
         </form>
       </div>
     )
