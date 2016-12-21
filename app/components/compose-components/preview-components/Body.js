@@ -2,7 +2,7 @@ import React from "react";
 
 import ElementStore from "../../../stores/ElementStore";
 import Header from "./Header";
-import Image from "./Image";
+import NewImage from "./Image";
 
 export default class Body extends React.Component {
   constructor(props) {
@@ -20,14 +20,11 @@ export default class Body extends React.Component {
   }
   render() {
     const { elements } = this.state;
-    const ElementComponents = elements.map((element) => {
-      return <Header key={element.id} header={element} />
-    });
 
     return (
       <table width="100%" border="0" cellSpacing="0" cellPadding="0">
         <tbody>
-          {ElementComponents}
+          {elements}
         </tbody>
       </table>
     );

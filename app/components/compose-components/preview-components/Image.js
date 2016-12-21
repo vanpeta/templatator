@@ -7,7 +7,7 @@ export default class Image extends React.Component {
       <tr>
         <td align="center" valing="top">
           <a href="https://www.gbyguess.ca/en/Account/RegisterLoyalty" _label="CONTENT-mainImage">
-            <img  width="100%" style="display: block;" src={this.props.image.url} />
+            <img  width="100%" style={{display: "block"}} src={this.props.image.url} />
           </a>
         </td>
       </tr>

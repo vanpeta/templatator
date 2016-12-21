@@ -1,6 +1,9 @@
+import React from 'react';
 import { EventEmitter } from 'events';
 
 import dispatcher from "../dispatcher";
+import Header from "../components/compose-components/preview-components/Header";
+import NewImage from "../components/compose-components/preview-components/Image";
 
 class ElementStore extends EventEmitter {
   constructor() {
@@ -8,15 +11,12 @@ class ElementStore extends EventEmitter {
     this.elements = [];
   }
   createHeader(header) {
+    var newHeader
     const id = Date.now()
-    this.elements.push({
-      id: id,
-      copy: header.copy,
-      color: header.color,
-      size: header.size,
-      fontWeight: header.fontWeight,
-      alignment: header.alignment
+    this.elements.map((element) => {
+      newHeader =  <Header key={id} header={header} />
     });
+    this.elements.push(newHeader);
     this.emit("change")
   }
   deleteHeader (id) {
@@ -28,11 +28,13 @@ class ElementStore extends EventEmitter {
   }
 
   createImage(image) {
+    var newImage
     const id = Date.now()
-    this.elements.push({
-      id: id,
-      url: image.url
-    })
+    this.elements.map((element) => {
+      newImage = <NewImage key={id} image={image} />
+    });
+    this.elements.push(newImage);
+    this.emit("change")
   }
 
   handleActions(action) {
@@ -40,9 +42,11 @@ class ElementStore extends EventEmitter {
       case "CREATE_HEADER": {
         this.createHeader(action.header);
       }
-      // case "CREATE_IMAGE": {
-      //   this.createImage(action.image);
-      // }
+    }
+    switch(action.type) {
+      case "CREATE_IMAGE": {
+        this.createImage(action.image);
+      }
     }
     switch(action.type) {
       case "DELETE_HEADER":{
