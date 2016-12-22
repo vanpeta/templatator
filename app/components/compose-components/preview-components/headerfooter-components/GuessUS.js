@@ -4,7 +4,37 @@ import Body from '../Body';
 import guessStyle from '../../../../styles/Guess';
 
 export default class GuessUS extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {fssWanted: false}
+  }
+
   render() {
+    const fssWanted = this.props.updatedFss.visible;
+    console.log("GuessUS", this.props.updatedFss.copy)
+    let fssBanner = null;
+    if (fssWanted) {
+      fssBanner = (
+        <tr>
+          <td valing="top" style={{'textAlign': 'left'}}>
+            <table width="100%" border="0" cellPadding="0" cellSpacing="0">
+            <tbody>
+              <tr>
+                <td valing="middle" style={guessStyle.freeShipping}>
+                  <a style={guessStyle.freeShippingA}_label="HEADER-Free-Shipping-Banner"  href="http://shop.guess.com/en/" >
+                      <strong>FREE SHIPPING*</strong> {this.props.updatedFss.copy}
+                  </a>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      )
+    }
+
+
+
     return (
       <div>
         <html xmlns={guessStyle.html}>
@@ -56,21 +86,7 @@ export default class GuessUS extends React.Component {
                           </table>
                         </td>
                       </tr>
-                      <tr>
-                        <td valing="top" style={{'textAlign': 'left'}}>
-                          <table width="100%" border="0" cellPadding="0" cellSpacing="0">
-                          <tbody>
-                            <tr>
-                              <td valing="middle" style={guessStyle.freeShipping}>
-                                <a style={guessStyle.freeShippingA}_label="HEADER-Free-Shipping-Banner"  href="http://shop.guess.com/en/" >
-                                    <strong>FREE SHIPPING*</strong> ON ORDERS $XX+
-                                </a>
-                              </td>
-                            </tr>
-                            </tbody>
-                          </table>
-                        </td>
-                      </tr>
+                      {fssBanner}
                       <tr>
                         <td valing="top" style={guessStyle.body}>
 
