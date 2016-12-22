@@ -14,6 +14,7 @@ export default class Headers extends React.Component {
     header.saved = true;
     HeaderActions.createHeader(header);
     header = {
+      selected: this.state.selected,
       copy: undefined,
       color: undefined,
       size: undefined,
@@ -28,26 +29,31 @@ export default class Headers extends React.Component {
   handleCopy(e) {
     const copy = e.target.value;
     header.copy = copy;
+    header.selected = this.state.selected
     this.props.previewHeader(header);
   }
   handleColor(e) {
     const color = e.target.value;
     header.color = color;
+    header.selected = this.state.selected
     this.props.previewHeader(header);
   }
   handleSize(e) {
     const size = e.target.value;
     header.size = size;
+    header.selected = this.state.selected
     this.props.previewHeader(header);
   }
   handleFontWeight(e) {
     const fontWeight = e.target.value;
     header.fontWeight = fontWeight;
+    header.selected = this.state.selected
     this.props.previewHeader(header);
   }
   handleAlignment(e) {
     const alignment = e.target.value;
     header.alignment = alignment;
+    header.selected = this.state.selected
     this.props.previewHeader(header);
   }
   handleClick() {

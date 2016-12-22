@@ -22,8 +22,8 @@ export default class Elements extends React.Component {
           </li>
           <li className="list-group-item">
             <Images
-
-               />
+              header={this.props.image}
+              previewImage={this.props.previewImage.bind(this)} />
           </li>
           <li className="list-group-item">CTAs</li>
         </div>

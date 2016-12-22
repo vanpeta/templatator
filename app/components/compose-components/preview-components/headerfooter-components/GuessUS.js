@@ -91,7 +91,9 @@ export default class GuessUS extends React.Component {
 
 
 
-                          <Body header={this.props.header} />
+                          <Body
+                            header={this.props.header}
+                            image={this.props.image} />
 
 
 

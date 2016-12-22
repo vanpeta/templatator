@@ -31,9 +31,11 @@ class ElementStore extends EventEmitter {
   createImage(image) {
     const id = Date.now()
     this.elements.push({
+      saved: image.saved,
       id: id,
-      url: image.url
+      src: image.src
     })
+    this.emit("change")
   }
 
   handleActions(action) {
@@ -41,13 +43,15 @@ class ElementStore extends EventEmitter {
       case "CREATE_HEADER": {
         this.createHeader(action.header);
       }
-      // case "CREATE_IMAGE": {
-      //   this.createImage(action.image);
-      // }
     }
     switch(action.type) {
       case "DELETE_HEADER":{
         this.deleteHeader(action.id)
+      }
+    }
+    switch(action.type) {
+      case "CREATE_IMAGE": {
+        this.createImage(action.image);
       }
     }
   }

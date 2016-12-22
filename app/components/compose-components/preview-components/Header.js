@@ -21,7 +21,6 @@ export default class Header extends React.Component {
   render() {
     const isHovered = this.state.isHovered;
     const isSaved = this.props.header.saved;
-    console.log(this.props.header)
 
     let removeButton = null;
     if (isHovered && isSaved) {

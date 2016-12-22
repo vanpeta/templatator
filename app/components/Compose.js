@@ -9,9 +9,8 @@ export default class Compose extends React.Component {
     super();
     this.state = {
       updatedFss: {copy: "ON ORDERS $XX+", visible: false},
-      header: {
-        copy: ''
-      }
+      header: {copy: ''},
+      image: {src: ''}
     };
   }
 
@@ -32,6 +31,7 @@ export default class Compose extends React.Component {
     this.setState({
       header: {
         saved: false,
+        selected: header.selected,
         copy: header.copy,
         color: header.color,
         size: header.size,
@@ -39,6 +39,18 @@ export default class Compose extends React.Component {
         alignment: header.alignment
       }
     });
+  }
+
+  previewImage(image) {
+    console.log(image)
+    this.setState({
+      image: {
+        saved: false,
+        selected: image.selected,
+        src: image.src,
+        alt: image.alt
+      }
+    })
   }
 
   render() {
@@ -49,11 +61,14 @@ export default class Compose extends React.Component {
           <Elements
             previewHeader={this.previewHeader.bind(this)}
             header={this.state.header}
+            previewImage={this.previewImage.bind(this)}
+            image={this.state.image}
             update={this.updatingFss.bind(this)}
             fssBanner={this.activateFss.bind(this)} />
           <Preview
             style={{height: "100%"}}
             header={this.state.header}
+            image={this.state.image}
             updatedFss={this.state.updatedFss}
           />
         </div>
