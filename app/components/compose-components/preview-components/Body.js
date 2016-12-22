@@ -19,6 +19,15 @@ export default class Body extends React.Component {
     });
   }
   render() {
+    const elementSaved = this.props.header.saved;
+    let currentElement = null;
+    if (!elementSaved) {
+      currentElement = (
+        <Header header={this.props.header} />
+      )
+    }
+
+
     const { elements } = this.state;
     const ElementComponents = elements.map((element) => {
       return <Header key={element.id} header={element} />
@@ -28,6 +37,7 @@ export default class Body extends React.Component {
       <table width="100%" border="0" cellSpacing="0" cellPadding="0">
         <tbody>
           {ElementComponents}
+          {currentElement}
         </tbody>
       </table>
     );

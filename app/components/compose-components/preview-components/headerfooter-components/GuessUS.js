@@ -11,7 +11,6 @@ export default class GuessUS extends React.Component {
 
   render() {
     const fssWanted = this.props.updatedFss.visible;
-    console.log("GuessUS", this.props.updatedFss.copy)
     let fssBanner = null;
     if (fssWanted) {
       fssBanner = (

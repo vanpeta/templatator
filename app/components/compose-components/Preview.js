@@ -8,7 +8,9 @@ export default class Preview extends React.Component {
       <div className="container-fluid col-sm-7" style={{minHeight: '100%', overflow: 'hidden'}}>
         <p>Preview</p>
         <div>
-          <HeaderFooter header={this.props.header} updatedFss={this.props.updatedFss}/>
+          <HeaderFooter
+            header={this.props.header}
+            updatedFss={this.props.updatedFss} />
         </div>
       </div>
     )

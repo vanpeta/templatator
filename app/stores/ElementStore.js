@@ -10,6 +10,7 @@ class ElementStore extends EventEmitter {
   createHeader(header) {
     const id = Date.now()
     this.elements.push({
+      saved: header.saved,
       id: id,
       copy: header.copy,
       color: header.color,

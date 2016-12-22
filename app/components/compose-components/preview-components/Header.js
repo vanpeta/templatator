@@ -19,10 +19,12 @@ export default class Header extends React.Component {
     this.setState({isHovered: false});
   }
   render() {
-    const isHovered = this.state.isHovered
+    const isHovered = this.state.isHovered;
+    const isSaved = this.props.header.saved;
+    console.log(this.props.header)
 
     let removeButton = null;
-    if (isHovered) {
+    if (isHovered && isSaved) {
       removeButton =
       <div style={{marginTop: '10px', textAlign: 'left', color: '#888', fontFamily: 'verdana', fontWeight: 'bold', fontSize: 'x-small', cursor: 'pointer', textDecoration: 'none', letterSpacing: 'normal'}}>
         <div

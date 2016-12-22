@@ -18,9 +18,13 @@ export default class Elements extends React.Component {
           <li className="list-group-item">
             <Headers
               header={this.props.header}
-              createHeader={this.props.createHeader.bind(this)} />
+              previewHeader={this.props.previewHeader.bind(this)} />
           </li>
-          <li className="list-group-item"><Images header={this.props.header} createHeader={this.props.createHeader.bind(this)} /></li>
+          <li className="list-group-item">
+            <Images
+
+               />
+          </li>
           <li className="list-group-item">CTAs</li>
         </div>
       </div>

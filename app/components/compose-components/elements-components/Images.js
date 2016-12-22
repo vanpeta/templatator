@@ -32,4 +32,4 @@ export default class Images extends React.Component {
       </div>
     )
   }
-};
+}

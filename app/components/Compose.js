@@ -10,7 +10,7 @@ export default class Compose extends React.Component {
     this.state = {
       updatedFss: {copy: "ON ORDERS $XX+", visible: false},
       header: {
-        copy: 'newTest'
+        copy: ''
       }
     };
   }
@@ -18,19 +18,20 @@ export default class Compose extends React.Component {
   updatingFss(copy) {
     this.setState({updatedFss: {
       copy: copy,
-      visible: this.state.updateFss.visible
+      visible: true
     }})
   }
   activateFss(b) {
     this.setState({updatedFss: {
       visible: b,
-      copy: this.state.updateFss.copy
+      copy: "ON ORDERS $XX+"
     }})
   }
 
-  createHeader(header) {
+  previewHeader(header) {
     this.setState({
       header: {
+        saved: false,
         copy: header.copy,
         color: header.color,
         size: header.size,
@@ -46,12 +47,14 @@ export default class Compose extends React.Component {
         <h2 className="col-sm-8 col-sm-offset-2">Compose</h2>
         <div className="row">
           <Elements
-            createHeader={this.createHeader.bind(this)}
+            previewHeader={this.previewHeader.bind(this)}
             header={this.state.header}
             update={this.updatingFss.bind(this)}
             fssBanner={this.activateFss.bind(this)} />
           <Preview
-            style={{height: "100%"}} header={this.state.header} updatedFss={this.state.updatedFss}
+            style={{height: "100%"}}
+            header={this.state.header}
+            updatedFss={this.state.updatedFss}
           />
         </div>
       </div>
