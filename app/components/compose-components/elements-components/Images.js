@@ -13,7 +13,9 @@ export default class Images extends React.Component {
 
   createImage() {
     image.saved = true;
-    imageActions.createHeader(image);
+    image.type = "image",
+    console.log(image.src);
+    imageActions.createNewElement(image);
     image = {
       selected: this.state.selected,
       src: undefined,
@@ -32,6 +34,7 @@ export default class Images extends React.Component {
     image.selected = this.state.selected
     this.props.previewImage(image);
   }
+
   handleAlt(e) {
     const alt = e.target.value;
     image.alt = alt;

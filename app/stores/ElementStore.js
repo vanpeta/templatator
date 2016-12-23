@@ -7,20 +7,24 @@ class ElementStore extends EventEmitter {
     super();
     this.elements = [];
   }
-  createHeader(header) {
+  createNewElement(element) {
     const id = Date.now()
     this.elements.push({
-      saved: header.saved,
+      saved: element.saved,
+      type: element.type,
       id: id,
-      copy: header.copy,
-      color: header.color,
-      size: header.size,
-      fontWeight: header.fontWeight,
-      alignment: header.alignment
+      copy: element.copy,
+      color: element.color,
+      size: element.size,
+      fontWeight: element.fontWeight,
+      alignment: element.alignment,
+      src: element.src,
+      alt: element.alt
     });
-    this.emit("change")
+    this.emit("change");
+    console.log(this.elements)
   }
-  deleteHeader (id) {
+  deleteElement (id) {
     var newLst = this.elements.filter((val) => {
       return val.id != id;
     });
@@ -28,30 +32,15 @@ class ElementStore extends EventEmitter {
     this.emit("change");
   }
 
-  createImage(image) {
-    const id = Date.now()
-    this.elements.push({
-      saved: image.saved,
-      id: id,
-      src: image.src
-    })
-    this.emit("change")
-  }
-
   handleActions(action) {
     switch(action.type) {
-      case "CREATE_HEADER": {
-        this.createHeader(action.header);
+      case "CREATE_ELEMENT": {
+        this.createNewElement(action.element);
       }
     }
     switch(action.type) {
-      case "DELETE_HEADER":{
-        this.deleteHeader(action.id)
-      }
-    }
-    switch(action.type) {
-      case "CREATE_IMAGE": {
-        this.createImage(action.image);
+      case "DELETE_ELEMENT":{
+        this.deleteElement(action.id);
       }
     }
   }

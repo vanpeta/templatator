@@ -1,30 +1,17 @@
 import dispatcher from "../dispatcher";
 
-export function createHeader(header) {
+export function createNewElement(element) {
   dispatcher.dispatch({
-    type: "CREATE_HEADER",
-    header: header
+    type: "CREATE_ELEMENT",
+    element: element
   });
 }
 
-export function deleteHeader (id) {
+export function deleteElement (id) {
   dispatcher.dispatch({
-    type: "DELETE_HEADER",
+    type: "DELETE_ELEMENT",
     id: id
   });
 }
 
-export function createImage(image) {
-  dispatcher.dispatch({
-    type: "CREATE_IMAGE",
-    image: image
-  });
-}
-
-export function deleteImage (id) {
-  dispatcher.dispatch({
-    type: "DELETE_IMAGE",
-    id: id
-  });
-}
 

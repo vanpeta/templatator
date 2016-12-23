@@ -9,9 +9,8 @@ export default class HeaderFooter extends React.Component {
     return (
       <div className="col-sm-12" id="template" style={{border: '1px solid black', marginBottom:'-9999px', paddingBottom: '9999px'}}>
           <GuessUS
-            header={this.props.header}
-            updatedFss={this.props.updatedFss}
-            image={this.props.image}/>
+            element={this.props.element}
+            updatedFss={this.props.updatedFss} />
       </div>
     )
   }

@@ -1,19 +1,20 @@
 import React from 'react';
 
-import * as HeaderActions from "../../../actions/Actions"
-var header = {}
+import * as textActions from "../../../actions/Actions";
+var text = {};
 
-export default class Headers extends React.Component {
+export default class Text extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
       selected: false
     }
   }
-  createHeader() {
-    header.saved = true;
-    HeaderActions.createHeader(header);
-    header = {
+  createText() {
+    text.saved = true;
+    text.type = "text";
+    textActions.createNewElement(text);
+    text = {
       selected: this.state.selected,
       copy: undefined,
       color: undefined,
@@ -21,40 +22,40 @@ export default class Headers extends React.Component {
       fontWeight: undefined,
       alignment: undefined
     }
-    this.props.previewHeader(header);
+    this.props.previewText(text);
   }
-  deleteHeader (id) {
-    HeaderActions.deleteHeader(id)
+  deletetext (id) {
+    textActions.deletetext(id)
   }
   handleCopy(e) {
     const copy = e.target.value;
-    header.copy = copy;
-    header.selected = this.state.selected
-    this.props.previewHeader(header);
+    text.copy = copy;
+    text.selected = this.state.selected
+    this.props.previewText(text);
   }
   handleColor(e) {
     const color = e.target.value;
-    header.color = color;
-    header.selected = this.state.selected
-    this.props.previewHeader(header);
+    text.color = color;
+    text.selected = this.state.selected
+    this.props.previewText(text);
   }
   handleSize(e) {
     const size = e.target.value;
-    header.size = size;
-    header.selected = this.state.selected
-    this.props.previewHeader(header);
+    text.size = size;
+    text.selected = this.state.selected
+    this.props.previewText(text);
   }
   handleFontWeight(e) {
     const fontWeight = e.target.value;
-    header.fontWeight = fontWeight;
-    header.selected = this.state.selected
-    this.props.previewHeader(header);
+    text.fontWeight = fontWeight;
+    text.selected = this.state.selected
+    this.props.previewText(text);
   }
   handleAlignment(e) {
     const alignment = e.target.value;
-    header.alignment = alignment;
-    header.selected = this.state.selected
-    this.props.previewHeader(header);
+    text.alignment = alignment;
+    text.selected = this.state.selected
+    this.props.previewText(text);
   }
   handleClick() {
     if (this.state.selected) {
@@ -82,7 +83,7 @@ export default class Headers extends React.Component {
               <input
                 id={'color'}
                 type={'color'}
-                value={this.props.header.color}
+                value={this.props.element.color}
                 onChange={this.handleColor.bind(this)} />
             </div>
             <div>
@@ -91,7 +92,7 @@ export default class Headers extends React.Component {
                 id={'size'}
                 placeholder={'10'}
                 type={'number'}
-                value={this.props.header.size}
+                value={this.props.element.size}
                 onChange={this.handleSize.bind(this)} />
             </div>
             <div>
@@ -113,7 +114,7 @@ export default class Headers extends React.Component {
                   <option value="right">Right</option>
               </select>
             </div>
-            <button onClick={this.createHeader.bind(this)}>Save</button>
+            <button onClick={this.createText.bind(this)}>Save</button>
           </form>
         )
     }

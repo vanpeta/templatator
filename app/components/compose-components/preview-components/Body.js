@@ -1,9 +1,7 @@
 import React from "react";
 
-import ElementStore from "../../../stores/ElementStore";
-import Header from "./Header";
-import Image from "./Image";
 import Element from "./Element";
+import ElementStore from "../../../stores/ElementStore";
 
 export default class Body extends React.Component {
   constructor(props) {
@@ -20,39 +18,24 @@ export default class Body extends React.Component {
     });
   }
   render() {
-    const textSaved = this.props.header.saved;
-    const textIsSelected = this.props.header.selected;
-    const imageSaved = this.props.image.saved;
-    const imageIsSelected = this.props.image.selected;
-    console.log(this.props.image)
+    const elementSaved = this.props.element.saved;
+    const elementIsSelected = this.props.element.selected;
     let currentElement = null;
-    if (!imageSaved && imageIsSelected) {
-      console.log('inside imagesaved false')
+    if (!elementSaved && elementIsSelected) {
       currentElement = (
-        <Image image={this.props.image} />
+        <Element element={this.props.element} />
       )
-      console.log(currentElement)
-    }
-    if (!textSaved && textIsSelected) {
-      console.log('inside textsaved false')
-      currentElement = (
-        <Header header={this.props.header} />
-      )
-      console.log(currentElement)
     }
 
-
-    const { elements } = this.state;
-    const ElementsComponents = elements.map((element) => {
-      return <Header key={element.id} header={element} />
+    const elements = this.state.elements;
+    const ElementsComponents = elements.map((e) => {
+      return <Element key={e.id} element={e} />
     });
 
     return (
       <table width="100%" border="0" cellSpacing="0" cellPadding="0">
-        <tbody>
-          {ElementsComponents}
-          {currentElement}
-        </tbody>
+        {ElementsComponents}
+        {currentElement}
       </table>
     );
   }

@@ -9,8 +9,7 @@ export default class Compose extends React.Component {
     super();
     this.state = {
       updatedFss: {copy: "ON ORDERS $XX+", visible: false},
-      header: {copy: ''},
-      image: {src: ''}
+      element: {},
     };
   }
 
@@ -27,24 +26,25 @@ export default class Compose extends React.Component {
     }})
   }
 
-  previewHeader(header) {
+  previewText(text) {
     this.setState({
-      header: {
+      element: {
+        type: "text",
         saved: false,
-        selected: header.selected,
-        copy: header.copy,
-        color: header.color,
-        size: header.size,
-        fontWeight: header.fontWeight,
-        alignment: header.alignment
+        selected: text.selected,
+        copy: text.copy,
+        color: text.color,
+        size: text.size,
+        fontWeight: text.fontWeight,
+        alignment: text.alignment
       }
     });
   }
 
   previewImage(image) {
-    console.log(image)
     this.setState({
-      image: {
+      element: {
+        type: "image",
         saved: false,
         selected: image.selected,
         src: image.src,
@@ -59,16 +59,14 @@ export default class Compose extends React.Component {
         <h2 className="col-sm-8 col-sm-offset-2">Compose</h2>
         <div className="row">
           <Elements
-            previewHeader={this.previewHeader.bind(this)}
-            header={this.state.header}
+            previewText={this.previewText.bind(this)}
+            element={this.state.element}
             previewImage={this.previewImage.bind(this)}
-            image={this.state.image}
             update={this.updatingFss.bind(this)}
             fssBanner={this.activateFss.bind(this)} />
           <Preview
             style={{height: "100%"}}
-            header={this.state.header}
-            image={this.state.image}
+            element={this.state.element}
             updatedFss={this.state.updatedFss}
           />
         </div>

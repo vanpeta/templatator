@@ -1,7 +1,7 @@
 import React from 'react';
 
 import FreeShippingBanner from './elements-components/FreeShippingBanner';
-import Headers from './elements-components/Headers';
+import Texts from './elements-components/Texts';
 import Images from './elements-components/Images';
 
 export default class Elements extends React.Component {
@@ -16,13 +16,13 @@ export default class Elements extends React.Component {
               fssBanner={this.props.fssBanner.bind(this)} />
           </li>
           <li className="list-group-item">
-            <Headers
-              header={this.props.header}
-              previewHeader={this.props.previewHeader.bind(this)} />
+            <Texts
+              element={this.props.element}
+              previewText={this.props.previewText.bind(this)} />
           </li>
           <li className="list-group-item">
             <Images
-              header={this.props.image}
+              element={this.props.element}
               previewImage={this.props.previewImage.bind(this)} />
           </li>
           <li className="list-group-item">CTAs</li>
