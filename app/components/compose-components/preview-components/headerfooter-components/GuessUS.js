@@ -55,12 +55,12 @@ export default class GuessUS extends React.Component {
                           <table className="preheader" width="100%" border="0" cellSpacing="0" cellPadding="0">
                           <tbody>
                             <tr>
-                              <td valing="top" style={guessStyle.preheader1}>
+                              <td valing="top" width='85%' style={guessStyle.preheader1}>
 
-                                To keep seeing us in your inbox, add <a style={guessStyle.noReply} href="mailto:noreply@admarketing.guess.com" ><strong>noreply@admarketing.guess.com</strong></a> to your address book.
+                                {this.props.updatedPreheader}
 
                               </td>
-                              <td align="right" valing="top" style={guessStyle.preheader2}>
+                              <td align="left" valing="top" width='15%' style={guessStyle.preheader2}>
                                 <a _label="PREHEADER-Mirror-Page" style={guessStyle.preheaderLink} href="<%@ include view='MirrorPageUrl' %>" _label="Mirror Page" _type="mirrorPage" >
                                   <strong>View in Browser</strong>
                                 </a>

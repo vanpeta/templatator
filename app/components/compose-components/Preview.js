@@ -10,7 +10,8 @@ export default class Preview extends React.Component {
         <div>
           <HeaderFooter
             element={this.props.element}
-            updatedFss={this.props.updatedFss} />
+            updatedFss={this.props.updatedFss}
+            updatedPreheader={this.props.updatedPreheader} />
         </div>
       </div>
     )

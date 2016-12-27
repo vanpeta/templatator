@@ -7,7 +7,6 @@ export default class Text extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      selected: false,
       link: false
     }
   }
@@ -67,11 +66,13 @@ export default class Text extends React.Component {
     }
   }
   handleClick() {
-    if (this.state.selected) {
-      this.setState({selected: false})
+    if (this.props.selected == 'text') {
+      var e = false;
+      this.props.updateSelected(e);
     }
     else {
-      this.setState({selected: true})
+      var e = 'text'
+      this.props.updateSelected(e)
     }
   }
   handleHref(e) {
@@ -87,7 +88,7 @@ export default class Text extends React.Component {
     this.props.previewText(text);
   }
   render() {
-    const isSelected = this.state.selected;
+    const isSelected = this.props.selected;
     const isALink = this.state.link;
     let linkOptions = null;
     if (isALink) {
@@ -109,7 +110,7 @@ export default class Text extends React.Component {
       )
     }
     let controlsForm = null;
-    if (isSelected) {
+    if (isSelected == 'text') {
       controlsForm = (
         <form className="text-left" style={{marginTop: '10px'}}>
             <div>

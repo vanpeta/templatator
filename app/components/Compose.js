@@ -8,7 +8,9 @@ export default class Compose extends React.Component {
   constructor() {
     super();
     this.state = {
+      selected: false,
       updatedFss: {copy: "ON ORDERS $XX+", visible: false},
+      preheader: "To keep seeing us in your inbox, add noreply@admarketing.guess.com to your address book.",
       element: {},
     };
   }
@@ -26,6 +28,12 @@ export default class Compose extends React.Component {
     }})
   }
 
+  updatingPreheader(copy) {
+    this.setState({
+      preheader: copy
+    })
+  }
+
   previewText(text) {
     this.setState({
       element: {
@@ -41,6 +49,13 @@ export default class Compose extends React.Component {
         label: text.label
       }
     });
+  }
+
+  updateSelected(e){
+    console.log('before update in compose', this.state.selected)
+    this.setState({
+      selected: e
+    },console.log('after update in compose',this.state.selected))
   }
 
   previewImage(image) {
@@ -64,14 +79,18 @@ export default class Compose extends React.Component {
         <div className="row">
           <Elements
             previewText={this.previewText.bind(this)}
+            selected={this.state.selected}
+            updateSelected={this.updateSelected.bind(this)}
             element={this.state.element}
             previewImage={this.previewImage.bind(this)}
-            update={this.updatingFss.bind(this)}
+            updateFss={this.updatingFss.bind(this)}
+            updatePreheader={this.updatingPreheader.bind(this)}
             fssBanner={this.activateFss.bind(this)} />
           <Preview
             style={{height: "100%"}}
             element={this.state.element}
             updatedFss={this.state.updatedFss}
+            updatedPreheader={this.state.preheader}
           />
         </div>
       </div>

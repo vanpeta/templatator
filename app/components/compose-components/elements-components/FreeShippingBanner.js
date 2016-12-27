@@ -7,17 +7,17 @@ export default class FreeShippingBanner extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      selected: false,
       active: false,
     }
   }
   handleClick() {
-    if (this.state.selected) {
-      this.setState({selected: false})
-      this.setState({active: false})
+    if (this.props.selected == 'fss') {
+      var e = false;
+      this.props.updateSelected(e);
     }
     else {
-      this.setState({selected: true})
+      var e = 'fss'
+      this.props.updateSelected(e)
     }
   }
   handleFssActivation() {
@@ -38,9 +38,9 @@ export default class FreeShippingBanner extends React.Component {
     this.props.update(copy)
   }
   render() {
-    const isSelected = this.state.selected;
+    const isSelected = this.props.selected;
     let fssSwitcher = null;
-    if (isSelected) {
+    if (isSelected == 'fss') {
       fssSwitcher = (
         <div>
           OFF

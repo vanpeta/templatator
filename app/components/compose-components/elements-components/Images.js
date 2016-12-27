@@ -7,7 +7,6 @@ export default class Images extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      selected: false,
       link: false
     }
   }
@@ -45,11 +44,13 @@ export default class Images extends React.Component {
     this.props.previewImage(image);
   }
   handleClick() {
-    if (this.state.selected) {
-      this.setState({selected: false})
+    if (this.props.selected == 'image') {
+      var e = false;
+      this.props.updateSelected(e);
     }
     else {
-      this.setState({selected: true})
+      var e = 'image'
+      this.props.updateSelected(e)
     }
   }
   handleMakeLink() {
@@ -74,7 +75,7 @@ export default class Images extends React.Component {
   }
 
   render() {
-    const isSelected = this.state.selected;
+    const isSelected = this.props.selected;
     const isALink = this.state.link;
     let linkOptions = null;
     if (isALink) {
@@ -96,7 +97,7 @@ export default class Images extends React.Component {
       )
     }
     let controlsForm = null;
-    if (isSelected) {
+    if (isSelected == 'image') {
       controlsForm = (
         <form className="text-left" style={{marginTop: '10px'}}>
           <div>
