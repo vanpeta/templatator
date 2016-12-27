@@ -111,6 +111,11 @@ export default class Text extends React.Component {
     }
     let controlsForm = null;
     if (isSelected == 'text') {
+      if (this.state.link) {
+        var checked = true
+      } else {
+        checked = false
+      }
       controlsForm = (
         <form className="text-left" style={{marginTop: '10px'}}>
             <div>
@@ -163,6 +168,7 @@ export default class Text extends React.Component {
                 <label for="fss" className="switch">
                   <input
                     id="fss"
+                    checked={checked}
                     type="checkbox"
                     onChange={this.handleMakeLink.bind(this)} />
                   <div className="slider round" />

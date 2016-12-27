@@ -35,26 +35,11 @@ export default class FreeShippingBanner extends React.Component {
   }
   updateFss(e) {
     var copy = e.target.value;
-    this.props.update(copy)
+    this.props.updateFss(copy)
   }
   render() {
     const isSelected = this.props.selected;
     let fssSwitcher = null;
-    if (isSelected == 'fss') {
-      fssSwitcher = (
-        <div>
-          OFF
-          <label for="fss" className="switch">
-            <input
-              id="fss"
-              type="checkbox"
-              onChange={this.handleFssActivation.bind(this)} />
-            <div className="slider round" />
-          </label>
-          ON
-        </div>
-      )
-    }
     const isActive = this.state.active;
     let fssText = null;
     if (isActive) {
@@ -69,6 +54,30 @@ export default class FreeShippingBanner extends React.Component {
         </div>
       )
     }
+    if (isSelected == 'fss') {
+      if (this.state.active) {
+      var checked = true
+      } else {
+        checked = false
+      }
+      fssSwitcher = (
+        <div>
+          <div>
+            OFF
+            <label for="fss" className="switch">
+              <input
+                id="fss"
+                type="checkbox"
+                checked={checked}
+                onChange={this.handleFssActivation.bind(this)} />
+              <div className="slider round" />
+            </label>
+            ON
+          </div>
+          {fssText}
+        </div>
+      )
+    }
     return (
       <div>
         <div
@@ -78,7 +87,6 @@ export default class FreeShippingBanner extends React.Component {
         </div>
         <div>
           {fssSwitcher}
-          {fssText}
         </div>
       </div>
     )
