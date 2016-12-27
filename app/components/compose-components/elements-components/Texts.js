@@ -7,7 +7,8 @@ export default class Text extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      selected: false
+      selected: false,
+      link: false
     }
   }
   createText() {
@@ -57,6 +58,14 @@ export default class Text extends React.Component {
     text.selected = this.state.selected
     this.props.previewText(text);
   }
+  handleMakeLink() {
+    if (this.state.link) {
+      this.setState({link: false})
+    }
+    else {
+      this.setState({link: true})
+    }
+  }
   handleClick() {
     if (this.state.selected) {
       this.setState({selected: false})
@@ -65,8 +74,40 @@ export default class Text extends React.Component {
       this.setState({selected: true})
     }
   }
+  handleHref(e) {
+    const href = e.target.value;
+    text.href = href;
+    text.selected = this.state.selected
+    this.props.previewText(text);
+  }
+  handleLabel(e) {
+    const label = e.target.value;
+    text.label = label;
+    text.selected = this.state.selected
+    this.props.previewText(text);
+  }
   render() {
     const isSelected = this.state.selected;
+    const isALink = this.state.link;
+    let linkOptions = null;
+    if (isALink) {
+      linkOptions = (
+        <div>
+          <div>
+            <label for={'href'}>url to drive to:</label>
+            <input id={'href'}
+            placeholder={'url'}
+            onChange={this.handleHref.bind(this)} />
+          </div>
+          <div>
+            <label for={'label'}>Tracking Label:</label>
+            <input id={'label'}
+            placeholder={'label'}
+            onChange={this.handleLabel.bind(this)} />
+          </div>
+        </div>
+      )
+    }
     let controlsForm = null;
     if (isSelected) {
       controlsForm = (
@@ -114,7 +155,22 @@ export default class Text extends React.Component {
                   <option value="right">Right</option>
               </select>
             </div>
-            <button onClick={this.createText.bind(this)}>Save</button>
+            <div>
+              Make this a link:<br />
+              <div>
+                NO
+                <label for="fss" className="switch">
+                  <input
+                    id="fss"
+                    type="checkbox"
+                    onChange={this.handleMakeLink.bind(this)} />
+                  <div className="slider round" />
+                </label>
+                YES
+              </div>
+            </div>
+            {linkOptions}
+            <button onClick={this.createText.bind(this)} className={'btn btn-primary'}>Save</button>
           </form>
         )
     }

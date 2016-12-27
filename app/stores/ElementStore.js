@@ -19,7 +19,9 @@ class ElementStore extends EventEmitter {
       fontWeight: element.fontWeight,
       alignment: element.alignment,
       src: element.src,
-      alt: element.alt
+      alt: element.alt,
+      href: element.href,
+      label: element.label
     });
     this.emit("change");
     console.log(this.elements)

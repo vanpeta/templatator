@@ -36,7 +36,9 @@ export default class Compose extends React.Component {
         color: text.color,
         size: text.size,
         fontWeight: text.fontWeight,
-        alignment: text.alignment
+        alignment: text.alignment,
+        href: text.href,
+        label: text.label
       }
     });
   }
@@ -48,7 +50,9 @@ export default class Compose extends React.Component {
         saved: false,
         selected: image.selected,
         src: image.src,
-        alt: image.alt
+        alt: image.alt,
+        href: image.href,
+        label: image.label
       }
     })
   }
