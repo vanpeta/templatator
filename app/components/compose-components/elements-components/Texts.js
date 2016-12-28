@@ -7,7 +7,7 @@ export default class Text extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      link: false
+
     }
   }
   createText() {
@@ -15,12 +15,15 @@ export default class Text extends React.Component {
     text.type = "text";
     textActions.createNewElement(text);
     text = {
-      selected: this.state.selected,
+      selected: this.props.selected,
       copy: undefined,
-      color: undefined,
+      color: "#000000",
       size: undefined,
       fontWeight: undefined,
-      alignment: undefined
+      alignment: undefined,
+      href: undefined,
+      label: undefined,
+      link: this.props.element.link
     }
     this.props.previewText(text);
   }
@@ -30,45 +33,49 @@ export default class Text extends React.Component {
   handleCopy(e) {
     const copy = e.target.value;
     text.copy = copy;
-    text.selected = this.state.selected
+    text.selected = this.props.selected
     this.props.previewText(text);
   }
   handleColor(e) {
     const color = e.target.value;
     text.color = color;
-    text.selected = this.state.selected
+    text.selected = this.props.selected
     this.props.previewText(text);
   }
   handleSize(e) {
     const size = e.target.value;
     text.size = size;
-    text.selected = this.state.selected
+    text.selected = this.props.selected
     this.props.previewText(text);
   }
   handleFontWeight(e) {
     const fontWeight = e.target.value;
     text.fontWeight = fontWeight;
-    text.selected = this.state.selected
+    text.selected = this.props.selected
     this.props.previewText(text);
   }
   handleAlignment(e) {
     const alignment = e.target.value;
     text.alignment = alignment;
-    text.selected = this.state.selected
+    text.selected = this.props.selected
     this.props.previewText(text);
   }
   handleMakeLink() {
-    if (this.state.link) {
-      this.setState({link: false})
+    if (this.props.element.link) {
+      text.link = false
+      this.props.previewText(text)
     }
     else {
-      this.setState({link: true})
+      text.link = true
+      this.props.previewText(text)
     }
   }
   handleClick() {
     if (this.props.selected == 'text') {
       var e = false;
       this.props.updateSelected(e);
+      text.selected = false;
+      this.props.previewText(text);
     }
     else {
       var e = 'text'
@@ -78,18 +85,18 @@ export default class Text extends React.Component {
   handleHref(e) {
     const href = e.target.value;
     text.href = href;
-    text.selected = this.state.selected
+    text.selected = this.props.selected;
     this.props.previewText(text);
   }
   handleLabel(e) {
     const label = e.target.value;
     text.label = label;
-    text.selected = this.state.selected
+    text.selected = this.props.selected
     this.props.previewText(text);
   }
   render() {
     const isSelected = this.props.selected;
-    const isALink = this.state.link;
+    const isALink = this.props.element.link;
     let linkOptions = null;
     if (isALink) {
       linkOptions = (
@@ -111,7 +118,7 @@ export default class Text extends React.Component {
     }
     let controlsForm = null;
     if (isSelected == 'text') {
-      if (this.state.link) {
+      if (this.props.element.link) {
         var checked = true
       } else {
         checked = false

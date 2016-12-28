@@ -46,16 +46,16 @@ export default class Compose extends React.Component {
         fontWeight: text.fontWeight,
         alignment: text.alignment,
         href: text.href,
-        label: text.label
+        label: text.label,
+        link: text.link
       }
     });
   }
 
   updateSelected(e){
-    console.log('before update in compose', this.state.selected)
     this.setState({
       selected: e
-    },console.log('after update in compose',this.state.selected))
+    })
   }
 
   previewImage(image) {
@@ -67,7 +67,8 @@ export default class Compose extends React.Component {
         src: image.src,
         alt: image.alt,
         href: image.href,
-        label: image.label
+        label: image.label,
+        link: image.link
       }
     })
   }

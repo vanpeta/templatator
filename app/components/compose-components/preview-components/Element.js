@@ -21,6 +21,7 @@ export default class Element extends React.Component {
     this.setState({isHovered: false});
   }
   render() {
+    console.log(this.props.element)
     const isHovered = this.state.isHovered;
     const isSaved = this.props.element.saved;
     let editButtons = null;
@@ -112,7 +113,7 @@ export default class Element extends React.Component {
     if (this.state.type == "text") {
       text = (
         <tr>
-          <td>
+          <td valing="top">
             <table width="100%" border="0" cellSpacing="0" cellPadding="0">
               <tbody>
                 <tr>
@@ -129,6 +130,11 @@ export default class Element extends React.Component {
             </table>
           </td>
         </tr>
+      )
+      return (
+        <tbody>
+          {text}
+        </tbody>
       )
     };
     if (this.state.type == "image") {
@@ -153,8 +159,34 @@ export default class Element extends React.Component {
         </tr>
       )
     };
+    if (this.state.type == "cta") {
+      cta = (
+        <tr>
+          <td align="left" valing="top">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="left" align="top" style={{width: '50%', paddingLeft: '6%', paddingRight: '3%'}}>
+                  <table width="100%" border="0" cellSpacing="0" cellPadding="0">
+                    <tr>
+                      <td bgcolor="#000000" style={{padding: '30px 8px 30px 8px', textAlign: 'center'}}>
+                        <a href="https://shop.guess.ca/en/Catalog/Browse/accessories/" _label="CONTENT-CTA"
+                        style={{fontSize: '18px', fontFamily: 'Century Gothic, CenturyGothic, Futura, Verdana, sans-serif', fontWeight: 'normal', color: '#ffffff', textDecoration: 'none', letterSpacing: '.2em', display: 'inline-block'}}>
+                          {this.props.element.copy}
+                          {editButtons}
+                        </a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      )
+    }
     return (
       <tbody>
+        hola
         {text}
         {image}
       </tbody>

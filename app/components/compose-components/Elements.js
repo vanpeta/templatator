@@ -4,6 +4,7 @@ import FreeShippingBanner from './elements-components/FreeShippingBanner';
 import Texts from './elements-components/Texts';
 import Images from './elements-components/Images';
 import Preheader from './elements-components/Preheader';
+import Cta from './elements-components/CTA';
 
 export default class Elements extends React.Component {
   render () {
@@ -38,7 +39,15 @@ export default class Elements extends React.Component {
               element={this.props.element}
               previewImage={this.props.previewImage.bind(this)} />
           </li>
-          <li className="list-group-item">CTAs</li>
+          <li className="list-group-item">
+            <Cta
+              selected={this.props.selected}
+              updateSelected={this.props.updateSelected.bind(this)} />
+          </li>
+          <li className="list-group-item">
+            Legal
+          </li>
+
         </div>
       </div>
     )

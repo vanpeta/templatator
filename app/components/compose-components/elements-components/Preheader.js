@@ -1,6 +1,5 @@
 import React from 'react';
 
-import * as imageActions from "../../../actions/Actions"
 var fss = {}
 
 export default class Preheader extends React.Component {

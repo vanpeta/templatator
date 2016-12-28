@@ -17,7 +17,7 @@ export default class Images extends React.Component {
     console.log(image.src);
     imageActions.createNewElement(image);
     image = {
-      selected: this.state.selected,
+      selected: this.props.selected,
       src: undefined,
       alt: undefined,
       href: undefined,
