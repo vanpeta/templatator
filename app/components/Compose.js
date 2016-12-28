@@ -73,6 +73,24 @@ export default class Compose extends React.Component {
     })
   }
 
+  previewCta(cta) {
+    this.setState({
+      element: {
+        type: "cta",
+        saved: false,
+        selected: cta.selected,
+        copy: cta.copy,
+        color: cta.color,
+        size: cta.size,
+        fontWeight: cta.fontWeight,
+        alignment: cta.alignment,
+        href: cta.href,
+        label: cta.label,
+        link: cta.link
+      }
+    });
+  }
+
   render() {
     return (
       <div className="text-center">

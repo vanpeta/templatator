@@ -164,9 +164,11 @@ export default class Element extends React.Component {
         <tr>
           <td align="left" valing="top">
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tbody>
               <tr>
                 <td align="left" align="top" style={{width: '50%', paddingLeft: '6%', paddingRight: '3%'}}>
                   <table width="100%" border="0" cellSpacing="0" cellPadding="0">
+                    <tbody>
                     <tr>
                       <td bgcolor="#000000" style={{padding: '30px 8px 30px 8px', textAlign: 'center'}}>
                         <a href="https://shop.guess.ca/en/Catalog/Browse/accessories/" _label="CONTENT-CTA"
@@ -176,9 +178,11 @@ export default class Element extends React.Component {
                         </a>
                       </td>
                     </tr>
+                    </tbody>
                   </table>
                 </td>
               </tr>
+              </tbody>
             </table>
           </td>
         </tr>
@@ -186,7 +190,6 @@ export default class Element extends React.Component {
     }
     return (
       <tbody>
-        hola
         {text}
         {image}
       </tbody>

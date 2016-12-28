@@ -6,26 +6,29 @@ var text = {};
 export default class Text extends React.Component {
   constructor (props) {
     super(props);
-    this.state = {
-
-    }
   }
   createText() {
-    text.saved = true;
-    text.type = "text";
-    textActions.createNewElement(text);
-    text = {
-      selected: this.props.selected,
-      copy: undefined,
-      color: "#000000",
-      size: undefined,
-      fontWeight: undefined,
-      alignment: undefined,
-      href: undefined,
-      label: undefined,
-      link: this.props.element.link
+    if(text.copy) {
+      text.saved = true;
+      text.type = "text";
+      textActions.createNewElement(text);
+      text = {
+        selected: this.props.selected,
+        copy: undefined,
+        color: "#000000",
+        size: undefined,
+        fontWeight: undefined,
+        alignment: undefined,
+        href: undefined,
+        label: undefined,
+        link: this.props.element.link
+      }
+      this.props.previewText(text);
+      document.getElementById('textform').reset();
     }
-    this.props.previewText(text);
+    else {
+      alert('need to define copy')
+    }
   }
   deletetext (id) {
     textActions.deletetext(id)
@@ -124,7 +127,7 @@ export default class Text extends React.Component {
         checked = false
       }
       controlsForm = (
-        <form className="text-left" style={{marginTop: '10px'}}>
+        <form id="textform" className="text-left" style={{marginTop: '10px'}}>
             <div>
               <label for={'copy'}>copy</label>
               <input
