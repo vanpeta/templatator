@@ -42,7 +42,8 @@ export default class Elements extends React.Component {
           <li className="list-group-item">
             <Cta
               selected={this.props.selected}
-              updateSelected={this.props.updateSelected.bind(this)} />
+              updateSelected={this.props.updateSelected.bind(this)}
+              previewCta={this.props.previewCta.bind(this)} />
           </li>
           <li className="list-group-item">
             Legal

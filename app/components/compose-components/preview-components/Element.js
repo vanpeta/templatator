@@ -21,7 +21,6 @@ export default class Element extends React.Component {
     this.setState({isHovered: false});
   }
   render() {
-    console.log(this.props.element)
     const isHovered = this.state.isHovered;
     const isSaved = this.props.element.saved;
     let editButtons = null;
@@ -110,6 +109,7 @@ export default class Element extends React.Component {
     const type = this.state.type
     let text = null;
     let image = null;
+    let cta = null;
     if (this.state.type == "text") {
       text = (
         <tr>
@@ -163,16 +163,16 @@ export default class Element extends React.Component {
       cta = (
         <tr>
           <td align="left" valing="top">
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <table width="100%" border="0" cellSpacing="0" cellPadding="0">
               <tbody>
               <tr>
-                <td align="left" align="top" style={{width: '50%', paddingLeft: '6%', paddingRight: '3%'}}>
+                <td align="left" align="top" style={{paddingLeft: this.props.element.buttonSize+'%', paddingRight: this.props.element.buttonSize+'%'}}>
                   <table width="100%" border="0" cellSpacing="0" cellPadding="0">
                     <tbody>
                     <tr>
-                      <td bgcolor="#000000" style={{padding: '30px 8px 30px 8px', textAlign: 'center'}}>
-                        <a href="https://shop.guess.ca/en/Catalog/Browse/accessories/" _label="CONTENT-CTA"
-                        style={{fontSize: '18px', fontFamily: 'Century Gothic, CenturyGothic, Futura, Verdana, sans-serif', fontWeight: 'normal', color: '#ffffff', textDecoration: 'none', letterSpacing: '.2em', display: 'inline-block'}}>
+                      <td style={{padding: this.props.element.height+'px 8px '+this.props.element.height+'px 8px', backgroundColor: this.props.element.bgColor, textAlign: 'center', borderTopColor: this.props.element.borderColor, borderTopWidth: '2px', borderTopStyle: 'solid', borderRightStyle: 'solid', borderRightWidth: '2px', borderRightColor: this.props.element.borderColor, borderBottomStyle: 'solid', borderBottomColor: this.props.element.borderColor, borderBottomWidth: '2px', borderLeftWidth: '2px', borderLeftStyle: 'solid', borderLeftColor: this.props.element.borderColor}}>
+                        <a href={this.props.element.href} _label="CONTENT-CTA"
+                        style={{fontSize: this.props.element.size, fontFamily: 'Century Gothic, CenturyGothic, Futura, Verdana, sans-serif', fontWeight: 'normal', color: this.props.element.color, textDecoration: 'none', letterSpacing: '.2em', display: 'inline-block'}}>
                           {this.props.element.copy}
                           {editButtons}
                         </a>
@@ -192,6 +192,7 @@ export default class Element extends React.Component {
       <tbody>
         {text}
         {image}
+        {cta}
       </tbody>
     );
   }

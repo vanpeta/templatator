@@ -74,6 +74,7 @@ export default class Compose extends React.Component {
   }
 
   previewCta(cta) {
+    console.log(cta.buttonSize);
     this.setState({
       element: {
         type: "cta",
@@ -83,6 +84,10 @@ export default class Compose extends React.Component {
         color: cta.color,
         size: cta.size,
         fontWeight: cta.fontWeight,
+        bgColor: cta.bgColor,
+        borderColor: cta.borderColor,
+        buttonSize: cta.buttonSize,
+        height: cta.height,
         alignment: cta.alignment,
         href: cta.href,
         label: cta.label,
@@ -104,7 +109,8 @@ export default class Compose extends React.Component {
             previewImage={this.previewImage.bind(this)}
             updateFss={this.updatingFss.bind(this)}
             updatePreheader={this.updatingPreheader.bind(this)}
-            fssBanner={this.activateFss.bind(this)} />
+            fssBanner={this.activateFss.bind(this)}
+            previewCta={this.previewCta.bind(this)} />
           <Preview
             style={{height: "100%"}}
             element={this.state.element}
