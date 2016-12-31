@@ -8,27 +8,25 @@ export default class Text extends React.Component {
     super(props);
   }
   createText() {
-    if(text.copy) {
-      text.saved = true;
-      text.type = "text";
-      textActions.createNewElement(text);
-      text = {
-        selected: this.props.selected,
-        copy: undefined,
-        color: "#000000",
-        size: undefined,
-        fontWeight: undefined,
-        alignment: undefined,
-        href: undefined,
-        label: undefined,
-        link: this.props.element.link
-      }
-      this.props.previewText(text);
-      document.getElementById('textform').reset();
+    if(!text.copy) {
+      return alert('need to define copy')
     }
-    else {
-      alert('need to define copy')
+    text.saved = true;
+    text.type = "text";
+    textActions.createNewElement(text);
+    text = {
+      selected: this.props.selected,
+      copy: undefined,
+      color: "#000000",
+      size: undefined,
+      fontWeight: undefined,
+      alignment: undefined,
+      href: undefined,
+      label: undefined,
+      link: this.props.element.link
     }
+    this.props.previewText(text);
+    document.getElementById('textform').reset();
   }
   deletetext (id) {
     textActions.deletetext(id)
@@ -74,15 +72,27 @@ export default class Text extends React.Component {
     }
   }
   handleClick() {
+    text = {
+      copy: undefined,
+      color: "#000000",
+      size: undefined,
+      fontWeight: undefined,
+      alignment: undefined,
+      href: undefined,
+      label: undefined,
+      link: this.props.element.link
+    }
     if (this.props.selected == 'text') {
       var e = false;
       this.props.updateSelected(e);
-      text.selected = false;
+      text.selected = e;
       this.props.previewText(text);
     }
     else {
       var e = 'text'
-      this.props.updateSelected(e)
+      this.props.updateSelected(e);
+      text.selected = e;
+      this.props.previewText(text);
     }
   }
   handleHref(e) {

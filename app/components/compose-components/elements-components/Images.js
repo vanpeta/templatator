@@ -47,6 +47,8 @@ export default class Images extends React.Component {
     if (this.props.selected == 'image') {
       var e = false;
       this.props.updateSelected(e);
+      image.selected= e;
+      this.props.previewImage(image)
     }
     else {
       var e = 'image'

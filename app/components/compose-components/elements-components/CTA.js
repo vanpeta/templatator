@@ -24,76 +24,88 @@ export default class Cta extends React.Component {
     }
   }
   handleClick() {
+    var cta ={
+      type: "cta",
+      saved: false,
+      selected: this.props.selected,
+      copy: this.props.copy,
+      color: this.props.color || '#000000',
+      size: this.props.size,
+      fontWeight: this.props.fontWeight,
+      bgColor: this.props.bgColor || '#ffffff',
+      borderColor: this.props.borderColor,
+      buttonSize: this.props.buttonSize,
+      height: this.props.height,
+      alignment: this.props.alignment,
+      href: this.props.href,
+      label: this.props.label,
+      link: this.props.link
+    }
     if (this.props.selected == 'cta') {
       var e = false;
       this.props.updateSelected(e);
+      cta.selected = e;
+      this.props.previewCta(cta)
     }
     else {
       var e = 'cta'
-      this.props.updateSelected(e)
+      this.props.updateSelected(e);
+      cta.selected = e;
+      this.props.previewCta(cta)
     }
   }
 
-  updateCta() {
-
-  }
 
   handleCopy(e) {
     const copy = e.target.value;
     this.state.copy = copy;
-    this.state.selected = this.props.selected
+    this.state.selected = this.props.selected;
     this.props.previewCta(this.state);
   }
   handleColor(e) {
     const color = e.target.value;
     this.state.color = color;
-    this.state.selected = this.props.selected
     this.props.previewCta(this.state);
   }
   handleSize(e) {
     const size = e.target.value;
     this.state.size = size;
-    this.state.selected = this.props.selected
     this.props.previewCta(this.state);
   }
   handleBgColor(e) {
     const bgColor = e.target.value;
     this.state.bgColor = bgColor;
-    this.state.selected = this.props.selected
     this.props.previewCta(this.state);
   }
   handleBorderColor(e) {
     const borderColor = e.target.value;
     this.state.borderColor = borderColor;
-    this.state.selected = this.props.selected
     this.props.previewCta(this.state);
   }
   handleButtonSize(e) {
     const buttonSize = (e.target.value/2);
     this.state.buttonSize = buttonSize;
-    this.state.selected = this.props.selected
     this.props.previewCta(this.state);
   }
   handleButtonHeight (e) {
     const height = (e.target.value+1);
     this.state.height = height;
-    this.state.selected = this.props.selected;
     this.props.previewCta(this.state);
   }
   handleHref(e) {
     const href = e.target.value;
     this.state.href = href;
-    this.state.selected = this.props.selected;
     this.props.previewCta(this.state);
   }
 
   createCta() {
+    if(!this.state.copy || !this.state.href) {
+      return alert('need to define copy and url to send users to')
+    }
     this.state.saved = true;
     this.state.type = "cta",
-    console.log(this.state.src);
     ctaActions.createNewElement(this.state);
     this.state = {
-      selected: this.props.selected,
       copy: undefined,
       color: undefined,
       size: undefined,

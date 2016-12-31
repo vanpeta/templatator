@@ -17,6 +17,10 @@ class ElementStore extends EventEmitter {
       color: element.color,
       size: element.size,
       fontWeight: element.fontWeight,
+      bgColor: element.bgColor,
+      borderColor: element.borderColor,
+      buttonSize: element.buttonSize,
+      height: element.height,
       alignment: element.alignment,
       src: element.src,
       alt: element.alt,
@@ -57,3 +61,4 @@ dispatcher.register(elementStore.handleActions.bind(elementStore))
 //elementStore.on("change", someHandler);
 
 export default elementStore;
+

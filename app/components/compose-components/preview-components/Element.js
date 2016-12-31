@@ -27,7 +27,7 @@ export default class Element extends React.Component {
     if (isHovered && isSaved) {
       editButtons =
       <tr>
-        <td onMouseLeave={() => {this.handleMouseLeave()}}>
+        <td>
           <div style={{marginTop: '10px', textAlign: 'left', color: '#888', fontFamily: 'verdana', fontWeight: 'bold', fontSize: 'x-small', cursor: 'pointer', textDecoration: 'none', letterSpacing: 'normal'}}>
             <div
               style={{display: 'inline-block', paddingRight: '5px'}}
@@ -48,23 +48,24 @@ export default class Element extends React.Component {
     if (link && this.state.type == "image") {
       anchorTag = (
         <tr>
-          <td>
+          <td
+            isHovered={isHovered}
+            onMouseEnter={() => {this.handleMouseEnter()}}
+            onMouseLeave={() => {this.handleMouseLeave()}}>
             <table width="100%" border="0" cellSpacing="0" cellPadding="0">
               <tbody>
                 <tr>
                   <td
                     align="center"
-                    valing="top"
-                    isHovered={isHovered}
-                    onMouseEnter={() => {this.handleMouseEnter()}}>
+                    valing="top">
                     <a href={link} _label={this.props.element.label}>
                       <img  width="100%" style={{display: 'block'}} src={this.props.element.src} alt={this.props.element.alt} />
                     </a>
-                    {editButtons}
                   </td>
                 </tr>
               </tbody>
             </table>
+            {editButtons}
           </td>
         </tr>
       )
@@ -79,22 +80,23 @@ export default class Element extends React.Component {
     if (link && this.state.type == "text") {
       anchorTag = (
         <tr>
-          <td>
+          <td
+            isHovered={isHovered}
+            onMouseEnter={() => {this.handleMouseEnter()}}
+            onMouseLeave={() => {this.handleMouseLeave()}}>
             <table width="100%" border="0" cellSpacing="0" cellPadding="0">
               <tbody>
                 <tr>
                   <td
-                    valing="top"
-                    isHovered={isHovered}
-                    onMouseEnter={() => {this.handleMouseEnter()}}>
+                    valing="top">
                     <a href={link} _label={this.props.element.label} style={{textAlign: this.props.element.alignment, fontWeight: this.props.element.fontWeight, fontFamily: 'CenturyGothic, Futura, Verdana, sans-serif', letterSpacing: '.25em', fontSize: this.props.element.size, color: this.props.element.color, lineHeight: '.8em', paddingLeft: '5%', textDecoration:'none'}}>
                     {this.props.element.copy}
                     </a>
-                    {editButtons}
                   </td>
                 </tr>
               </tbody>
             </table>
+            {editButtons}
           </td>
         </tr>
       )
@@ -113,21 +115,22 @@ export default class Element extends React.Component {
     if (this.state.type == "text") {
       text = (
         <tr>
-          <td valing="top">
+          <td valing="top"
+            isHovered={isHovered}
+            onMouseEnter={() => {this.handleMouseEnter()}}
+            onMouseLeave={() => {this.handleMouseLeave()}}>
             <table width="100%" border="0" cellSpacing="0" cellPadding="0">
               <tbody>
                 <tr>
                   <td
                     valing="top"
-                    isHovered={isHovered}
-                    onMouseEnter={() => {this.handleMouseEnter()}}
                     style={{textAlign: this.props.element.alignment, fontWeight: this.props.element.fontWeight, fontFamily: 'CenturyGothic, Futura, Verdana, sans-serif', letterSpacing: '.25em', fontSize: this.props.element.size, color: this.props.element.color, lineHeight: '.8em', paddingLeft: '5%'}}>
                     {this.props.element.copy}
-                    {editButtons}
                   </td>
                 </tr>
               </tbody>
             </table>
+            {editButtons}
           </td>
         </tr>
       )
@@ -140,21 +143,22 @@ export default class Element extends React.Component {
     if (this.state.type == "image") {
       image = (
         <tr>
-          <td>
+          <td
+            isHovered={isHovered}
+            onMouseEnter={() => {this.handleMouseEnter()}}
+            onMouseLeave={() => {this.handleMouseLeave()}}>
             <table width="100%" border="0" cellSpacing="0" cellPadding="0">
               <tbody>
                 <tr>
                   <td
                     align="center"
-                    valing="top"
-                    isHovered={isHovered}
-                    onMouseEnter={() => {this.handleMouseEnter()}}>
+                    valing="top">
                     <img  width="100%" style={{display: 'block'}} src={this.props.element.src} alt={this.props.element.alt} />
-                    {editButtons}
                   </td>
                 </tr>
               </tbody>
             </table>
+            {editButtons}
           </td>
         </tr>
       )
@@ -162,7 +166,10 @@ export default class Element extends React.Component {
     if (this.state.type == "cta") {
       cta = (
         <tr>
-          <td align="left" valing="top">
+          <td align="left" valing="top"
+            isHovered={isHovered}
+            onMouseEnter={() => {this.handleMouseEnter()}}
+            onMouseLeave={() => {this.handleMouseLeave()}}>
             <table width="100%" border="0" cellSpacing="0" cellPadding="0">
               <tbody>
               <tr>
@@ -174,7 +181,6 @@ export default class Element extends React.Component {
                         <a href={this.props.element.href} _label="CONTENT-CTA"
                         style={{fontSize: this.props.element.size, fontFamily: 'Century Gothic, CenturyGothic, Futura, Verdana, sans-serif', fontWeight: 'normal', color: this.props.element.color, textDecoration: 'none', letterSpacing: '.2em', display: 'inline-block'}}>
                           {this.props.element.copy}
-                          {editButtons}
                         </a>
                       </td>
                     </tr>
@@ -184,6 +190,7 @@ export default class Element extends React.Component {
               </tr>
               </tbody>
             </table>
+            {editButtons}
           </td>
         </tr>
       )

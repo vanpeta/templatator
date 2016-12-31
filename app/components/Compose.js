@@ -74,7 +74,6 @@ export default class Compose extends React.Component {
   }
 
   previewCta(cta) {
-    console.log(cta.buttonSize);
     this.setState({
       element: {
         type: "cta",
